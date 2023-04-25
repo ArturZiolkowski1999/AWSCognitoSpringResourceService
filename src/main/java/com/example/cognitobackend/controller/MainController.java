@@ -13,6 +13,7 @@ public class MainController {
 
     @GetMapping("/hello")
     public ResponseEntity<MessageDTO> helloAdmin() {
+        //!TODO user id to log
         return ResponseEntity.ok(new MessageDTO("hola desde cognito"));
     }
 

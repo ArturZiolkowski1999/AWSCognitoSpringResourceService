@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
 import java.util.List;
 
 @Component
@@ -30,8 +31,7 @@ public class JwtProvider {
     ConfigurableJWTProcessor configurableJWTProcessor;
 
     public Authentication authenticate(HttpServletRequest request) throws Exception {
-//        String token = extractToken(request);
-        String token = "";
+        String token = request.getHeader(AUTHORIZATION);
         if (token != null) {
             JWTClaimsSet claims = configurableJWTProcessor.process(getToken(token), null);
             validateToken(claims);
